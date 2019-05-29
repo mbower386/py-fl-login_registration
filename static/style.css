@@ -1,0 +1,26 @@
+/* .index-wrapper {
+
+} */
+h1 {
+  margin: auto;
+  width: 30% !important;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+h3 {
+  text-align: center;
+}
+
+.index-wrapper {
+  margin: 0 auto;
+  width: 50% !important;
+}
+
+.button-right {
+  float: right;
+}
+
+.alert-message {
+  color: red;
+}

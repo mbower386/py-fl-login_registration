@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Login and Registration</h1>
+  <div class="index-wrapper container-fluid">
+    <div class="row">
+      <div class="form-group user-form col-md-6">
+        <h3>Register</h3>
+        <form action="/create_user" method="POST">
+          <p><input type="text" class="form-control" name="f_name" placeholder="First Name"></p>
+          <div class="warning">
+            {% with errors = get_flashed_messages(category_filter=["f_name"]) %}
+            {% if errors %}
+            <div class="alert-message block-message error">
+              <a class="close" href="#">×</a>
+              <ul>
+                {%- for msg in errors %}
+                <li>{{ msg }}</li>
+                {% endfor -%}
+              </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+          </div>
+          <p><input type="text" class="form-control" name="l_name" placeholder="Last Name"></p>
+          <div class="warning">
+            {% with errors = get_flashed_messages(category_filter=["l_name"]) %}
+            {% if errors %}
+            <div class="alert-message block-message error">
+              <a class="close" href="#">×</a>
+              <ul>
+                {%- for msg in errors %}
+                <li>{{ msg }}</li>
+                {% endfor -%}
+              </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+          </div>
+          <p><input type="email" class="form-control" name="email_add" placeholder="Email"></p>
+          <div class="warning">
+            {% with errors = get_flashed_messages(category_filter=["email", "email_format"]) %}
+            {% if errors %}
+            <div class="alert-message block-message error">
+              <a class="close" href="#">×</a>
+              <ul>
+                {%- for msg in errors %}
+                <li>{{ msg }}</li>
+                {% endfor -%}
+              </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+          </div>
+          <p><input type="password" class="form-control" name="pword" placeholder="Password"></p>
+          <div class="warning">
+            {% with errors = get_flashed_messages(category_filter=["p_word", "p_word_match"]) %}
+            {% if errors %}
+            <div class="alert-message block-message error">
+              <a class="close" href="#">×</a>
+              <ul>
+                {%- for msg in errors %}
+                <li>{{ msg }}</li>
+                {% endfor -%}
+              </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+          </div>
+          <p><input type="password" class="form-control" name="pword2" placeholder="Confirm Password"></p>
+          <div class="warning">
+            {% with errors = get_flashed_messages(category_filter=["p_word", "p_word_match"]) %}
+            {% if errors %}
+            <div class="alert-message block-message error">
+              <a class="close" href="#">×</a>
+              <ul>
+                {%- for msg in errors %}
+                <li>{{ msg }}</li>
+                {% endfor -%}
+              </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+          </div>
+
+          <button type="submit" class="btn btn-primary button-right">Register</button>
+
+
+        </form>
+      </div>
+
+      <div class="form-group login-form col-md-6">
+        <h3>Login</h3>
+        <form action="/login" method="POST">
+          <p><input type="text" class="form-control" name="l_email_add" placeholder="Email"></p>
+          <p><input type="password" class="form-control" name="l_password" placeholder="Password"></p>
+          <button type="submit" class="btn btn-primary button-right">Login</button>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+
+</html>
